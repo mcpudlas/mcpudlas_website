@@ -5,350 +5,511 @@
   --font-heading: 'Julius Sans One', sans-serif;
   --font-body: 'Crimson Text', serif;
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    height: var(--nav-height);
-    background-color: var(--bg-white);
+  /* Color Variables - Light Mode Default */
+  --bg-white: #ffffff;
+  --text-color: #333333;
+  --link-color: #333333;
+  --link-hover: #000000;
+  --bg-overlay: rgba(255, 255, 255, 0.9);
+  --nav-height: 80px;
+  --footer-icon-color: #333333;
+  --footer-icon-hover: #000000;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: var(--nav-height);
+  background-color: var(--bg-white);
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text-color);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--link-color);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--link-hover);
+  border-bottom: 1px solid var(--text-color);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-color);
+  background-color: var(--bg-white);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+p {
+  font-family: var(--font-body);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px;
+  background-color: var(--bg-white);
+  /* Ensure footer matches body */
+  margin-top: auto;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.footer-icons a {
+  color: var(--footer-icon-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.footer-icons a:hover {
+  transform: scale(1.1);
+  color: var(--footer-icon-hover);
+}
+
+.footer-icons svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  padding: 60px 10%;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 60px;
+}
+
+.hero-image {
+  flex: 1;
+  width: auto;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-image img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  /* Optional: adds a slight finish */
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.hero-bio p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  max-width: 600px;
+}
+
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Postcards Page Styles */
+.postcards-main {
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex: 1;
+  /* Pushes footer down */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.postcards-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  /* Approx 60px */
+  font-weight: 400;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.three-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+  /* Increased margin for better spacing */
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  text-align: center;
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* Response down to 1 column on mobile */
+@media (max-width: 768px) {
+  .three-col-grid {
+    grid-template-columns: 1fr;
+    width: 90%;
   }
+}
 
-  .logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: #333;
+.postcards-intro {
+  margin-bottom: 60px;
+}
+
+.postcards-intro p {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  /* Approx 21px */
+  margin: 5px 0;
+  color: var(--text-color);
+}
+
+.postcards-grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.postcard-item {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+
+.postcard-item img {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+}
+
+
+@media (max-width: 900px) {
+  .postcards-grid {
+    column-count: 2;
   }
+}
 
-  nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-  }
-
-  nav a {
-    text-decoration: none;
-    color: var(--link-color);
-    font-family: var(--font-heading);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-  }
-
-  nav a:hover,
-  nav a.active {
-    color: var(--link-hover);
-    border-bottom: 1px solid #333;
-  }
-
-  body {
-    font-family: var(--font-body);
-    color: var(--text-color);
-    background-color: var(--bg-white);
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-heading);
-  }
-
-  p {
-    font-family: var(--font-body);
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 40px;
-    background-color: var(--bg-white);
-    /* Ensure footer matches body */
-    margin-top: auto;
-  }
-
-  .footer-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    align-items: center;
-  }
-
-  .footer-icons a {
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease, color 0.2s ease;
-  }
-
-  .footer-icons a:hover {
-    transform: scale(1.1);
-    color: #000;
-  }
-
-  .footer-icons svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-  }
-
-  .hero-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    text-align: left;
-    padding: 60px 10%;
-    max-width: 1400px;
-    margin: 0 auto;
-    gap: 60px;
-  }
-
-  .hero-image {
-    flex: 1;
-    width: auto;
-    margin-bottom: 0;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .hero-image img {
-    max-width: 400px;
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    /* Optional: adds a slight finish */
-  }
-
-  .hero-text {
-    flex: 1;
-  }
-
-  .hero-text h1 {
-    font-size: 3rem;
-    margin-bottom: 30px;
-    line-height: 1.2;
-  }
-
-  .hero-bio p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    max-width: 600px;
-  }
-
-
-  /* Projects Grid */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .project-card {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-    cursor: pointer;
-  }
-
-  .project-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    display: block;
-  }
-
-  .project-card:hover img {
-    transform: scale(1.05);
-  }
-
-  .project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .project-card:hover .project-overlay {
-    opacity: 1;
-  }
-
-  .project-overlay h3 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  /* Postcards Page Styles */
-  .postcards-main {
-    padding: 60px 20px;
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex: 1;
-    /* Pushes footer down */
-    width: 100%;
-    box-sizing: border-box;
+@media (max-width: 600px) {
+  .postcards-grid {
+    column-count: 1;
   }
 
   .postcards-title {
-    font-family: var(--font-heading);
-    font-size: 3.5rem;
-    /* Approx 60px */
-    font-weight: 400;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
+    font-size: 2.5rem;
+  }
+}
+
+/* Vertical Stack Layout for Bridge to Nowhere */
+.vertical-stack-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto 40px auto;
+  /* Added bottom margin */
+}
+
+.stack-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Project Details Info */
+.project-details {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.project-details .description {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.metadata {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  gap: 5px 30px;
+  flex-wrap: wrap;
+}
+
+.metadata p {
+  margin: 0;
+}
+
+
+
+/* Mobile Optimization for Hero Section & Project Pages */
+@media (max-width: 768px) {
+
+  /* Hero Section */
+  .hero-container {
+    flex-direction: column-reverse;
+    padding: 40px 20px;
+    gap: 30px;
+    text-align: center;
   }
 
-  .three-col-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 40px;
-    /* Increased margin for better spacing */
-    width: 100%;
-    max-width: 1000px;
+  .hero-text h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-bio p {
     margin-left: auto;
     margin-right: auto;
+    font-size: 1rem;
   }
 
-  .grid-item {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .grid-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .caption {
-    text-align: center;
-    font-family: 'Crimson Text', serif;
-    font-size: 0.9rem;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    color: #333;
-  }
-
-  /* Response down to 1 column on mobile */
-  @media (max-width: 768px) {
-    .three-col-grid {
-      grid-template-columns: 1fr;
-      width: 90%;
-    }
-  }
-
-  .postcards-intro {
-    margin-bottom: 60px;
-  }
-
-  .postcards-intro p {
-    font-family: var(--font-body);
-    font-size: 1.3rem;
-    /* Approx 21px */
-    margin: 5px 0;
-    color: #333;
-  }
-
-  .postcards-grid {
-    column-count: 3;
-    column-gap: 20px;
-  }
-
-  .postcard-item {
-    break-inside: avoid;
+  .hero-image {
+    justify-content: center;
     margin-bottom: 20px;
   }
 
-  .postcard-item img {
-    width: 100%;
-    display: block;
-    border-radius: 2px;
+  /* Project Page Adjustments */
+  .postcards-main {
+    padding: 30px 15px;
   }
 
-
-  @media (max-width: 900px) {
-    .postcards-grid {
-      column-count: 2;
-    }
+  .postcards-title {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
   }
 
-  @media (max-width: 600px) {
-    .postcards-grid {
-      column-count: 1;
-    }
-
-    .postcards-title {
-      font-size: 2.5rem;
-    }
-  }
-
-  /* Vertical Stack Layout for Bridge to Nowhere */
-  .vertical-stack-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    max-width: 1000px;
-    margin: 0 auto 40px auto;
-    /* Added bottom margin */
-  }
-
-  .stack-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* Project Details Info */
   .project-details {
-    margin-bottom: 60px;
-    text-align: center;
+    margin-bottom: 40px;
   }
 
   .project-details .description {
-    font-family: var(--font-body);
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.1rem;
+    padding: 0 10px;
   }
 
   .metadata {
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    color: #555;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
   }
 
+  .vertical-stack-grid {
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .three-col-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 30px;
+  }
+
+  .thumbnails-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+  }
+
+  /* Projects Grid Mobile - Titles below images */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 10px;
+    gap: 40px 15px;
+  }
+
+  .project-card {
+    aspect-ratio: auto;
+    height: auto;
+    overflow: visible;
+    margin-bottom: 5px;
+  }
+
+  .project-card img {
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  .project-overlay {
+    position: relative;
+    opacity: 1;
+    background: transparent;
+    height: auto;
+    padding: 10px 0 0 0;
+    color: #333;
+  }
+
+  .project-overlay h3 {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    margin: 0;
+    color: #000;
+    line-height: 1.2;
+  }
+
+  /* Postcards Grid Mobile Override */
+  .postcards-grid {
+    column-count: 2;
+    column-gap: 15px;
+  }
+
+  .postcard-item {
+    margin-bottom: 15px;
+  }
+
+  /* Force 3 columns on mobile for specific grids */
+  .mobile-row {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px;
+    width: 100%;
+  }
+}
+
+/* Dark Mode Defaults */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-white: #121212;
+    --text-color: #e0e0e0;
+    --link-color: #ffffff;
+    --link-hover: #bbbbbb;
+    --bg-overlay: rgba(18, 18, 18, 0.9);
+    --footer-icon-color: #e0e0e0;
+    --footer-icon-hover: #ffffff;
+  }
+
+  /* Specific Dark Mode Adjustments */
+  .project-card {
+    border: 1px solid #333;
+    /* subtle border for dark mode cards */
+  }
+
+  .video-wrapper h2,
+  .video-wrapper p {
+    color: var(--text-color);
+  }
 }

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crawly Cubbies | Marie Pudlas</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Local Carousel Styles - Matching Site Aesthetcis */
+        .carousel-container {
+            max-width: 1000px;
+            margin: 0 auto 60px auto;
+        }
+
+        .main-image-container {
+            width: 100%;
+            height: 600px;
+            background-color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .main-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 100%;
+            padding-bottom: 100%;
+            position: relative;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .thumbnail.active {
+            border-color: #333;
+        }
+
+        .thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Video Container */
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 2px;
+            /* Slight match to other images */
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .video-container:hover .video-thumbnail {
+            opacity: 0.6;
+        }
+
+        .video-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 50px;
+            background-color: rgba(33, 33, 33, 0.9);
+            border-radius: 10px;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        .video-container:hover .video-play-button {
+            background-color: #f00;
+        }
+
+        .video-play-button::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-35%, -50%);
+            /* Center triangle */
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+        }
+
+        @media (max-width: 768px) {
+            .thumbnails-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .main-image-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <!-- Logo Text matching style.css -->
+        <div class="logo">MARIE PUDLAS</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="postcards-main">
+        <h1 class="postcards-title">CHILD’S PLAY - CRAWLY CUBBIES</h1>
+
+        <div class="project-details">
+            <p class="description">Tasked to make moveable play pieces for a Vancouver preschool with children ages 3-5,
+                we made a simple form that would allow a child to crawl under, use as a rocker, and build fortresses.
+            </p>
+            <p class="description">We dubbed them 'Crawly Cubbies'.</p>
+            <p class="description">The imagination of children is boundless. When brought to the preschool, the children
+                turned them into Santa's sleigh, mountains, chairs, and slides, among others things. Just wide enough
+                for two to sit side by side, who knows what adventures they'll go on together next!</p>
+
+            <div class="metadata">
+                <p><strong>Course:</strong> Studio - Design Build</p>
+                <p><strong>Date:</strong> Sept - Dec 2021</p>
+                <p><strong>Values:</strong> Risky play, natural materials</p>
+                <p><strong>Skills:</strong> Construction, Budgeting, Documentation</p>
+                <p><strong>Team:</strong> Beau Wuthrich, Ivana Lexa-French</p>
+                <p><strong>Roles:</strong> Early design phase, Construction, Budgeting, Photos & Video</p>
+            </div>
+        </div>
+
+        <!-- Carousel 1: Fabrication Process (12 Images) -->
+        <div class="carousel-container" id="carousel-fabrication">
+            <div class="main-image-container">
+                <img id="main-img-1" src="Images/Projects/Academic/Crawly%20Cubbies/construction/CNC_1_CC.JPG"
+                    alt="Fabrication Process">
+            </div>
+            <div class="thumbnails-grid">
+                <div class="thumbnail active"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/CNC_1_CC.JPG', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/CNC_1_CC.JPG">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/CNC_2_CC.JPG', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/CNC_2_CC.JPG">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/MARE%20AND%20TABLE%20SAW.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/MARE%20AND%20TABLE%20SAW.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/IVANA%20AND%20ROUTER.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/IVANA%20AND%20ROUTER.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/PXL_20211129_220109945.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/PXL_20211129_220109945.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/BEAU%20AND%20SLATS.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/BEAU%20AND%20SLATS.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/MAREI%20WITH%20WEDGES-2021-11-29.jpeg', this)">
+                    <img
+                        src="Images/Projects/Academic/Crawly%20Cubbies/construction/MAREI%20WITH%20WEDGES-2021-11-29.jpeg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/01-SANDING%20-1.jpeg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/01-SANDING%20-1.jpeg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/Linseed_2.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/Linseed_2.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/PXL_20211203_222002958.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/PXL_20211203_222002958.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/PXL_20211204_004538982.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/PXL_20211204_004538982.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(1, 'Images/Projects/Academic/Crawly%20Cubbies/construction/PXL_20211204_021444527.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/PXL_20211204_021444527.jpg">
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-wrapper">
+            <h2>The Glue-up</h2>
+            <p class="description">Watch three classmates bond over glue</p>
+            <div class="video-container" onclick="loadVideo(this, 'OK6_tURc1tI')">
+                <img src="Images/Projects/Academic/Crawly%20Cubbies/construction/GlueUp_2_small.jpg"
+                    alt="The Glue-up Video" class="video-thumbnail">
+                <div class="video-play-button"></div>
+            </div>
+        </div>
+
+        <script>
+            function loadVideo(container, videoId) {
+                container.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            }
+        </script>
+
+        <!-- Carousel 2: Final Product (9 Images) -->
+        <div class="carousel-container" id="carousel-final" style="margin-top: 80px;">
+            <div class="main-image-container">
+                <img id="main-img-2" src="Images/Projects/Academic/Crawly%20Cubbies/Finished/FINISHED.jpg"
+                    alt="Final Product">
+            </div>
+            <div class="thumbnails-grid">
+                <div class="thumbnail active"
+                    onclick="updateCarousel(2, 'Images/Projects/Academic/Crawly%20Cubbies/Finished/FINISHED.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/Finished/FINISHED.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(2, 'Images/Projects/Academic/Crawly%20Cubbies/Finished/CC%20-%20edited-12.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/Finished/CC%20-%20edited-12.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(2, 'Images/Projects/Academic/Crawly%20Cubbies/Finished/CC%20-%20edited-13.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/Finished/CC%20-%20edited-13.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(2, 'Images/Projects/Academic/Crawly%20Cubbies/Finished/CC%20-%20edited-32.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/Finished/CC%20-%20edited-32.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(2, 'Images/Projects/Academic/Crawly%20Cubbies/Finished/CC%20-%20edited-11.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/Finished/CC%20-%20edited-11.jpg">
+                </div>
+                <div class="thumbnail"
+                    onclick="updateCarousel(2, 'Images/Projects/Academic/Crawly%20Cubbies/Finished/CC%20-%20edited-14.jpg', this)">
+                    <img src="Images/Projects/Academic/Crawly%20Cubbies/Finished/CC%20-%20edited-14.jpg">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section: Children Playing (3 Static Images) -->
+        <div class="three-col-grid mobile-row" style="margin-top: 80px;">
+            <div class="grid-item">
+                <img src="Images/Projects/Academic/Crawly%20Cubbies/Playing%20with%20Crawly%20Cubbies/Child_Play_1_square.jpg"
+                    alt="Child Play 1">
+            </div>
+            <div class="grid-item">
+                <img src="Images/Projects/Academic/Crawly%20Cubbies/Playing%20with%20Crawly%20Cubbies/Child_Play_2_square.jpg"
+                    alt="Child Play 2">
+            </div>
+            <div class="grid-item">
+                <img src="Images/Projects/Academic/Crawly%20Cubbies/Playing%20with%20Crawly%20Cubbies/Child_Play_3_square.jpg"
+                    alt="Child Play 3">
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-icons">
+            <a href="mailto:mcpudlas@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+            </a>
+            <a href="https://instagram.com/mcpudlas" target="_blank" aria-label="Instagram">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function updateCarousel(carouselId, imageSrc, thumbnailElement) {
+            // Update main image
+            const mainImage = document.getElementById('main-img-' + carouselId);
+            mainImage.src = imageSrc;
+
+            // Update active state of thumbnails
+            const carouselContainer = thumbnailElement.closest('.carousel-container');
+            const thumbnails = carouselContainer.querySelectorAll('.thumbnail');
+
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnailElement.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
